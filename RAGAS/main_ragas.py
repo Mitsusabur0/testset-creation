@@ -1,94 +1,136 @@
 import os
-import glob
-import pandas as pd
+import asyncio
 from dotenv import load_dotenv
+import pandas as pd
 
-# LangChain imports
-from langchain_community.document_loaders import UnstructuredMarkdownLoader
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+# OpenAI Client
+from openai import OpenAI
 
-# RAGAS imports
-from ragas.testset.generator import TestsetGenerator
-from ragas.testset.evolutions import simple, reasoning, multi_context
-from ragas.llms import LangchainLLMWrapper
+# Ragas Imports
+from ragas.testset import TestsetGenerator
+from ragas.testset.persona import Persona
+from ragas.testset.synthesizers import (
+    SingleHopSpecificQuerySynthesizer,
+    MultiHopSpecificQuerySynthesizer,
+    MultiHopAbstractQuerySynthesizer
+)
+from ragas.llms import llm_factory
+from ragas.embeddings import OpenAIEmbeddings
 
-# 1. Setup Environment
+# Document Loading & Splitting
+from langchain_community.document_loaders import DirectoryLoader, UnstructuredMarkdownLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+# 1. Load Environment Variables
 load_dotenv()
 
-# Verify API Key
-if not os.getenv("OPENAI_API_KEY"):
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
     raise ValueError("Please set OPENAI_API_KEY in your .env file")
 
-# 2. Configuration for "gpt-5-nano"
-# We wrap it so RAGAS can use it.
-generator_llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-5-nano"))
-critic_llm = LangchainLLMWrapper(ChatOpenAI(model="gpt-5-nano"))
-embeddings = OpenAIEmbeddings(model="text-embedding-3-small") # Standard efficient embedding
+async def main():
+    print("--- Starting RAG Testset Generation (Chilean PoC) ---")
 
-# 3. Load the Knowledge Base
-# We look for a folder named 'kb_docs' containing the 5 .md files
-folder_path = "./kb_docs"
-md_files = glob.glob(os.path.join(folder_path, "*.md"))
+    # 2. Setup Models
+    openai_client = OpenAI(api_key=api_key)
 
-if len(md_files) == 0:
-    raise ValueError(f"No .md files found in {folder_path}. Please create the folder and add the 5 files.")
+    # We use gpt-5-nano. 
+    # Note: We rely on the model's default max_tokens, but we control input size via chunking.
+    ragas_llm = llm_factory(
+        model="gpt-5-nano", 
+        client=openai_client
+    )
 
-print(f"Loading {len(md_files)} documents...")
-documents = []
-for file_path in md_files:
-    loader = UnstructuredMarkdownLoader(file_path)
-    documents.extend(loader.load())
+    ragas_embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small", 
+        client=openai_client
+    )
 
-# 4. Initialize the RAGAS Generator
-generator = TestsetGenerator(
-    generator_llm=generator_llm,
-    critic_llm=critic_llm,
-    embeddings=embeddings,
-)
+    # 3. Load Documents
+    print(f"Loading documents from ./knowledge_base...")
+    loader = DirectoryLoader(
+        "./knowledge_base", 
+        glob="*.md", 
+        loader_cls=UnstructuredMarkdownLoader
+    )
+    raw_documents = loader.load()
+    print(f"Loaded {len(raw_documents)} raw documents.")
 
-# -------------------------------------------------------------------------
-# CRITICAL: CUSTOMIZING THE PERSONA
-# RAGAS allows us to adapt prompts. We will define the distribution first,
-# then we rely on the 'adapt' method with Spanish, but we will also 
-# use a trick: we prepend a persona instruction to the LLM wrapper if needed,
-# or simply trust the high-level 'language' param for basic translation.
-#
-# However, to ensure "Realistic/Naive", we rely on the specific distributions
-# and the inherent capability of gpt-5 to follow the language nuance.
-# -------------------------------------------------------------------------
+    # 4. CRITICAL FIX: Split documents manually
+    # We split into smaller chunks (1024 chars) to prevent the LLM from 
+    # hitting output token limits during summarization.
+    print("Splitting documents to prevent token overflow...")
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1024,
+        chunk_overlap=200
+    )
+    documents = text_splitter.split_documents(raw_documents)
+    print(f"Created {len(documents)} chunks from raw documents.")
 
-# Define the mix of questions (Simple, Reasoning, Multi-Context)
-# We want 10 questions total (2 per file * 5 files)
-TEST_SIZE = 10 
+    # 5. Define Chilean Personas
+    personas = [
+        Persona(
+            name="Joven Profesional",
+            role_description="Soy un joven profesional chileno de 26 años. Es mi primera vez lidiando con bancos. "
+                             "Hablo de forma informal, uso modismos chilenos suaves (como 'cachái', 'pega', 'plata'). "
+                             "Me interesan las cosas rápidas, digitales y no entiendo términos técnicos financieros. "
+                             "Hago preguntas abstractas sobre 'cómo lograr cosas' más que pedir datos duros."
+        ),
+        Persona(
+            name="Dueña de Pyme",
+            role_description="Tengo una pequeña empresa de repostería en Santiago. "
+                             "Necesito capital de trabajo y ordenarme. "
+                             "Soy directa, pragmática y busco soluciones para mi negocio. "
+                             "Pregunto sobre financiamiento, plazos y requisitos reales."
+        ),
+        Persona(
+            name="Jefe de Hogar",
+            role_description="Padre de familia, 45 años. Busco seguridad y ahorrar para la universidad de mis hijos. "
+                             "Soy desconfiado con la letra chica. "
+                             "Hago preguntas sobre beneficios, tasas, seguridad y créditos de consumo. "
+                             "Hablo en español de Chile estándar."
+        )
+    ]
 
-distributions = {
-    simple: 0.5,        # 50% Simple questions
-    reasoning: 0.25,    # 25% Logic based
-    multi_context: 0.25 # 25% Combining info
-}
+    # 6. Define Query Distribution
+    query_distribution = [
+        (MultiHopAbstractQuerySynthesizer(llm=ragas_llm), 0.6),
+        (SingleHopSpecificQuerySynthesizer(llm=ragas_llm), 0.2),
+        (MultiHopSpecificQuerySynthesizer(llm=ragas_llm), 0.2),
+    ]
 
-print("Generating synthetic test set with Chilean User Persona...")
+    # 7. Initialize TestsetGenerator
+    generator = TestsetGenerator(
+        llm=ragas_llm,
+        embedding_model=ragas_embeddings,
+        persona_list=personas,
+        llm_context="Toda la generación de preguntas, respuestas y contexto debe ser estrictamente en Español de Chile. "
+                    "Evita el español neutro o de España. Usa un tono de 'Asistente Virtual' útil."
+    )
 
-# generate_with_langchain_docs is the standard entry point
-# We pass language="spanish" which prompts RAGAS to translate internal prompts.
-testset = generator.generate_with_langchain_docs(
-    documents,
-    test_size=TEST_SIZE,
-    distributions=distributions,
-    with_debugging_logs=False,
-    is_async=False, # Set True if running in a notebook/async env
-    raise_exceptions=True
-)
+    # 8. Generate Testset using 'generate_with_chunks'
+    print(f"Generating 20 samples using Knowledge Graph approach...")
+    
+    # We use generate_with_chunks because we already split the docs manually
+    testset = generator.generate_with_chunks(
+        chunks=documents, 
+        testset_size=20,
+        query_distribution=query_distribution,
+        raise_exceptions=False,
+        with_debugging_logs=True 
+    )
 
-# 5. Export and Post-Processing
-df = testset.to_pandas()
+    # 9. Export Results
+    df = testset.to_pandas()
+    
+    print("\nGeneration Complete! Preview:")
+    if not df.empty:
+        print(df[['user_input', 'reference', 'synthesizer_name']].head())
+        output_filename = "ragas_testset_chilean_poc.csv"
+        df.to_csv(output_filename, index=False)
+        print(f"\nSaved full testset to {output_filename}")
+    else:
+        print("DataFrame is empty. No samples were generated.")
 
-# OPTIONAL: Clean up for CSV export
-# We want to check columns: 'question', 'ground_truth', 'contexts', 'evolution_type'
-output_filename = "poc_rag_testset.csv"
-df.to_csv(output_filename, index=False)
-
-print(f"✅ Success! Generated {len(df)} test cases.")
-print(f"📁 Saved to {output_filename}")
-print("\nSample Question generated:")
-print(df.iloc[0]['question'])
+if __name__ == "__main__":
+    asyncio.run(main())
