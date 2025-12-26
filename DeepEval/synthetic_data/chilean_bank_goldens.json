@@ -1,0 +1,92 @@
+[
+    {
+        "input": "¿Requisitos para abrir CAV (Cuenta Ahorro Vivienda) en BancoEstado?",
+        "actual_output": null,
+        "expected_output": "Los requisitos son:\n- Ser Persona Natural\n- Ser mayor de 18 años\n- No tener otra Cuenta de Ahorro Vivienda en el sistema financiero\n- Realizar un Depósito de apertura de al menos UF 0,5",
+        "context": [
+            "# Cuáles son los requisitos para la Cuenta de Ahorro Vivienda\n\n**Categoría**: Sitio Publico | **Subcategoría**: Cuenta Ahorro Vivienda | **Documento**: BD1-00517 | **Versión**: 1.0\n\n## Respuesta\n\nLos requisitos son:\n\nSer Persona Natural\n\nSer mayor de 18 años.\n\nNo tener otra Cuenta de Ahorro Vivienda en el sistema financiero.\n\nRealizar un Depósito de apertura de al menos UF 0,5.\n\nCuáles son los requisitos para la Cuenta de Ahorro Vivienda\n\n---\n**Fuente**: https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/ahorro-e-inversiones-/cuentas-de-ahorro-/ahorro-vivienda.html#tabahorro-item-d55526cc6a-tab"
+        ],
+        "source_file": "knowledge_base\\BD1-00517.md"
+    },
+    {
+        "input": "¿Qué requisitos generales necesito para abrir una Cuenta Ahorro Vivienda en BancoEstado y qué documentos suelen pedir?",
+        "actual_output": null,
+        "expected_output": "Los requisitos son:\n- Ser Persona Natural\n- Ser mayor de 18 años\n- No tener otra Cuenta de Ahorro Vivienda en el sistema financiero\n- Realizar un Depósito de apertura de al menos UF 0,5",
+        "context": [
+            "# Cuáles son los requisitos para la Cuenta de Ahorro Vivienda\n\n**Categoría**: Sitio Publico | **Subcategoría**: Cuenta Ahorro Vivienda | **Documento**: BD1-00517 | **Versión**: 1.0\n\n## Respuesta\n\nLos requisitos son:\n\nSer Persona Natural\n\nSer mayor de 18 años.\n\nNo tener otra Cuenta de Ahorro Vivienda en el sistema financiero.\n\nRealizar un Depósito de apertura de al menos UF 0,5.\n\nCuáles son los requisitos para la Cuenta de Ahorro Vivienda\n\n---\n**Fuente**: https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/ahorro-e-inversiones-/cuentas-de-ahorro-/ahorro-vivienda.html#tabahorro-item-d55526cc6a-tab"
+        ],
+        "source_file": "knowledge_base\\BD1-00517.md"
+    },
+    {
+        "input": "¿Puede un chileno con residencia definitiva obtener un crédito hipotecario, sujeto a los requisitos vigentes para su otorgamiento?",
+        "actual_output": null,
+        "expected_output": "Chilena o extranjera con permanencia definitiva. Sujeto a cumplimiento de requisitos comerciales y normativos vigentes a la fecha de otorgamiento.",
+        "context": [
+            "# Nacionalidad para Solicitar Crédito Hipotecario\n\n**Categoría**: Banco | **Subcategoría**: Negocio | **Documento**: BD1-00599 | **Versión**: 1.0\n\n## Respuesta\n\nChilena o extranjera con permanencia definitiva. Sujeto a cumplimiento de requisitos comerciales y normativos vigentes a la fecha de otorgamiento.\n\nNacionalidad para Solicitar Crédito Hipotecario\n"
+        ],
+        "source_file": "knowledge_base\\BD1-00599.md"
+    },
+    {
+        "input": "¿Extranjeros con permanencia definitiva pueden solicitar crédito hipotecario en este banco?",
+        "actual_output": null,
+        "expected_output": "Chilena o extranjera con permanencia definitiva. Sujeto a cumplimiento de requisitos comerciales y normativos vigentes a la fecha de otorgamiento.",
+        "context": [
+            "# Nacionalidad para Solicitar Crédito Hipotecario\n\n**Categoría**: Banco | **Subcategoría**: Negocio | **Documento**: BD1-00599 | **Versión**: 1.0\n\n## Respuesta\n\nChilena o extranjera con permanencia definitiva. Sujeto a cumplimiento de requisitos comerciales y normativos vigentes a la fecha de otorgamiento.\n\nNacionalidad para Solicitar Crédito Hipotecario\n"
+        ],
+        "source_file": "knowledge_base\\BD1-00599.md"
+    },
+    {
+        "input": "¿Cuáles son los pasos para abrir la Cuenta de Ahorro Vivienda en BancoEstado?",
+        "actual_output": null,
+        "expected_output": "Paso 1: Ingresa a la App Banco estado\n\nPaso 2: Dirígete a la opción menú productos\n\nPaso 3: Selecciona abrir Cuenta de Ahorro Vivienda",
+        "context": [
+            "# Cómo contratar tu cuenta de ahorro para la vivienda\n\n**Categoría**: Sitio Publico | **Subcategoría**: Cuenta Ahorro Vivienda | **Documento**: BD1-00513 | **Versión**: 1.0\n\n## Respuesta\n\nPaso 1: Ingresa a la App Banco estado\n\nPaso 2: Dirígete a la opción menú productos\n\nPaso 3: Selecciona abrir Cuenta de Ahorro Vivienda\n\nCómo contratar tu cuenta de ahorro para la vivienda\n\n---\n**Fuente**: https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/ahorro-e-inversiones-/cuentas-de-ahorro-/ahorro-vivienda.html#tabahorro-item-d55526cc6a-tab"
+        ],
+        "source_file": "knowledge_base\\BD1-00513.md"
+    },
+    {
+        "input": "¿Cómo se usa la CAV en la app BancoEstado para hacer operaciones básicas?",
+        "actual_output": null,
+        "expected_output": "El documento describe cómo contratar la Cuenta de Ahorro para la Vivienda (CAV) en la app Banco Estado. Pasos: 1) Ingresa a la App Banco Estado; 2) Dirígete a la opción menú productos; 3) Selecciona abrir Cuenta de Ahorro Vivienda.",
+        "context": [
+            "# Cómo contratar tu cuenta de ahorro para la vivienda\n\n**Categoría**: Sitio Publico | **Subcategoría**: Cuenta Ahorro Vivienda | **Documento**: BD1-00513 | **Versión**: 1.0\n\n## Respuesta\n\nPaso 1: Ingresa a la App Banco estado\n\nPaso 2: Dirígete a la opción menú productos\n\nPaso 3: Selecciona abrir Cuenta de Ahorro Vivienda\n\nCómo contratar tu cuenta de ahorro para la vivienda\n\n---\n**Fuente**: https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/ahorro-e-inversiones-/cuentas-de-ahorro-/ahorro-vivienda.html#tabahorro-item-d55526cc6a-tab"
+        ],
+        "source_file": "knowledge_base\\BD1-00513.md"
+    },
+    {
+        "input": "¿Cuáles son las ventajas de la Cuenta Ahorro Vivienda y cuánto ahorro mínimo se exige?",
+        "actual_output": null,
+        "expected_output": "Ventajas de la Cuenta Ahorro Vivienda:\n- Es una cuenta unipersonal y reajustable de acuerdo a la variación de la UF, con la que puedes postular a Subsidio Habitacional.\n- Gana intereses y reajustes anualmente por los depósitos mantenidos por 90 días o más.\n- Permite realizar giros de hasta 30 UF diarias, o montos mayores con un aviso de 7 días de anticipación.\n- Puedes postular al Subsidio Habitacional del D. S. Nº 40 de 2004 del MINVU, inmediatamente después de haber completado el ahorro mínimo exigido.\n- También puedes postular al Subsidio General de Interés Territorial (ex Renovación Urbana) o de Rehabilitación Patrimonial contemplado en el D. S. Nº 40/2004 del MINVU.\n\nAhorro mínimo exigido: el documento no especifica el monto.",
+        "context": [
+            "# Qué es la Cuenta de Ahorro Vivienda\n\n**Categoría**: Sitio Publico | **Subcategoría**: Cuenta Ahorro Vivienda | **Documento**: BD1-00515 | **Versión**: 1.0\n\n## Respuesta\n\nEs una Cuenta unipersonal y reajustable de acuerdo a la variación de la UF, con la que puedes postular a Subsidio Habitacional.\n\nGana intereses y reajustes anualmente por los Depósitos mantenidos por 90 días o más en tu Cuenta. Además, te permite realizar giros de hasta 30 UF diarias, o montos mayores con un aviso de 7 días de anticipación.\n\nCon esta Cuenta de ahorro puedes postular al Subsidio Habitacional del D. S. Nº 40 de 2004 del Ministerio de Vivienda y Urbanismo, inmediatamente después de haber completado el ahorro mínimo exigido. También puedes postular al Subsidio General de Interés Territorial (ex Renovación Urbana) o de Rehabilitación Patrimonial contemplado en el D. S. Nº 40/2004 del MINVU.\n\nQué es la Cuenta de Ahorro Vivienda\n\n---\n**Fuente**: https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/ahorro-e-inversiones-/cuentas-de-ahorro-/ahorro-vivienda.html#tabahorro-item-d55526cc6a-tab"
+        ],
+        "source_file": "knowledge_base\\BD1-00515.md"
+    },
+    {
+        "input": "¿Podrías explicar la Cuenta Ahorro Vivienda: unipersonal, UF reajuste, intereses a 90 días, 30 UF/día, HAB y otros subsidios?",
+        "actual_output": null,
+        "expected_output": "- Es una cuenta unipersonal y reajustable de acuerdo a la variación de la UF.\n- Te permite postular al Subsidio Habitacional (DS 40 de 2004, MINVU) inmediatamente después de completar el ahorro mínimo exigido.\n- También puedes postular al Subsidio General de Interés Territorial (ex Renovación Urbana) o de Rehabilitación Patrimonial contemplado en el DS 40/2004.\n- Gana intereses y reajustes anualmente por los depósitos mantenidos por 90 días o más en la cuenta.\n- Permite giros de hasta 30 UF diarios, o montos mayores con aviso de 7 días de anticipación.",
+        "context": [
+            "# Qué es la Cuenta de Ahorro Vivienda\n\n**Categoría**: Sitio Publico | **Subcategoría**: Cuenta Ahorro Vivienda | **Documento**: BD1-00515 | **Versión**: 1.0\n\n## Respuesta\n\nEs una Cuenta unipersonal y reajustable de acuerdo a la variación de la UF, con la que puedes postular a Subsidio Habitacional.\n\nGana intereses y reajustes anualmente por los Depósitos mantenidos por 90 días o más en tu Cuenta. Además, te permite realizar giros de hasta 30 UF diarias, o montos mayores con un aviso de 7 días de anticipación.\n\nCon esta Cuenta de ahorro puedes postular al Subsidio Habitacional del D. S. Nº 40 de 2004 del Ministerio de Vivienda y Urbanismo, inmediatamente después de haber completado el ahorro mínimo exigido. También puedes postular al Subsidio General de Interés Territorial (ex Renovación Urbana) o de Rehabilitación Patrimonial contemplado en el D. S. Nº 40/2004 del MINVU.\n\nQué es la Cuenta de Ahorro Vivienda\n\n---\n**Fuente**: https://www.bancoestado.cl/content/bancoestado-public/cl/es/home/home/productos-/ahorro-e-inversiones-/cuentas-de-ahorro-/ahorro-vivienda.html#tabahorro-item-d55526cc6a-tab"
+        ],
+        "source_file": "knowledge_base\\BD1-00515.md"
+    },
+    {
+        "input": "¿Cuál es la renta líquida mínima para un crédito hipotecario y qué condiciones aplican, como dividendo ≤ 30%, codeudor/2º comprador y evaluación de crédito/riesgo?",
+        "actual_output": null,
+        "expected_output": "- Renta líquida mínima para solicitar crédito hipotecario: $600.000.\n\n- Opción de complementar renta:\n  - con un codeudor, con o sin vínculo, o con un segundo comprador; o con un segundo o tercer comprador.\n  - La renta de ambos ingresos debe ser ≥ $900.000 líquidos.\n\n- Para complementar la renta: el titular debe cumplir la renta mínima de $600.000; sujeto a evaluación comercial y de riesgo vigente al momento de otorgamiento del crédito.\n\n- Aval: si se requiere, debe ser evaluado de forma independiente y cumplir con todas las normativas vigentes por sí solo.\n\n- Dividendo a pagar: hasta el 30% de tus ingresos mensuales.",
+        "context": [
+            "# Renta líquida Mínima para Solicitar Crédito Hipotecario\n\n**Categoría**: Banco | **Subcategoría**: Negocio | **Documento**: BD1-00602 | **Versión**: 1.0\n\n## Respuesta\n\nSueldo líquido mayor o igual a $600.000 con opción de complementar renta con un codeudor, con o sin vínculo, o segundo comprador. Sujeto a evaluación comercial y de riesgo vigente al momento de otorgamiento del crédito.\n\nOpción de complementar renta con un codeudor, con o sin vínculo, o un segundo o tercer comprador. La renta de ambos ingresos debe ser mayor o igual a $900.000 pesos líquidos.\n\nPara complementación de renta, el titular del crédito debe cumplir con la renta mínima de $600.000. Sujeto a evaluación comercial y de riesgo vigente al momento de otorgamiento del crédito.\n\nEn caso de requerir un aval, este deberá ser evaluado en forma independiente de la misma forma que el deudor directo , deberá calificar en todos los aspectos de la evaluación y cumplir con todas las normativas vigentes por sí solo.\n\nValor del dividendo a pagar hasta el 30% de tus ingresos mensuales.\n\nRenta líquida Mínima para Solicitar Crédito Hipotecario\n"
+        ],
+        "source_file": "knowledge_base\\BD1-00602.md"
+    },
+    {
+        "input": "¿Se puede sumar renta de codeudor o 2º comprador para alcanzar 900k neto?",
+        "actual_output": null,
+        "expected_output": "Sí. Se puede complementar la renta con un codeudor o con un segundo (o tercer) comprador para que la suma de ingresos sea mayor o igual a $900.000 pesos líquidos. El titular debe cumplir con la renta mínima de $600.000. Sujeto a evaluación comercial y de riesgo vigente al momento de otorgamiento del crédito.",
+        "context": [
+            "# Renta líquida Mínima para Solicitar Crédito Hipotecario\n\n**Categoría**: Banco | **Subcategoría**: Negocio | **Documento**: BD1-00602 | **Versión**: 1.0\n\n## Respuesta\n\nSueldo líquido mayor o igual a $600.000 con opción de complementar renta con un codeudor, con o sin vínculo, o segundo comprador. Sujeto a evaluación comercial y de riesgo vigente al momento de otorgamiento del crédito.\n\nOpción de complementar renta con un codeudor, con o sin vínculo, o un segundo o tercer comprador. La renta de ambos ingresos debe ser mayor o igual a $900.000 pesos líquidos.\n\nPara complementación de renta, el titular del crédito debe cumplir con la renta mínima de $600.000. Sujeto a evaluación comercial y de riesgo vigente al momento de otorgamiento del crédito.\n\nEn caso de requerir un aval, este deberá ser evaluado en forma independiente de la misma forma que el deudor directo , deberá calificar en todos los aspectos de la evaluación y cumplir con todas las normativas vigentes por sí solo.\n\nValor del dividendo a pagar hasta el 30% de tus ingresos mensuales.\n\nRenta líquida Mínima para Solicitar Crédito Hipotecario\n"
+        ],
+        "source_file": "knowledge_base\\BD1-00602.md"
+    }
+]
